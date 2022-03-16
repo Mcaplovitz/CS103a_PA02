@@ -45,7 +45,7 @@ class Transactions():
         ''' return a transaction with a specified rowid '''
         con= sqlite3.connect(self.dbfile)
         cur = con.cursor()
-        cur.execute("SELECT item#,* from transactions where item#=(?)",(itemNum) )
+        cur.execute("SELECT item#,* from transactions where item#=(?)",(itemNums) )
         tuples = cur.fetchall()
         con.commit()
         con.close()
