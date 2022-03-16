@@ -78,22 +78,22 @@ def process_choice(choice):
         desc = input("new category description: ")
         cat = {'name':name, 'desc':desc}
         category.update(rowid,cat)
-    elif choice=='4':
+    elif choice =='4': #show transactions
 
-    elif choice=='5': 
+    elif choice == '5':  # add transaction
 
-    elif choice=='6':
+    elif choice == '6':  # delete transaction
 
-    elif choice=='7':
+    elif choice == '7':  # summarize transactions by date
 
-    elif choice=='8':
+    elif choice == '8':  # summarize transactions by month
 
-    elif choice=='9':
+    elif choice == '9':  # summarize transactions by year
 
-    elif choice=='10':
+    elif choice == '10':  # summarize transactions by category
 
-    elif choice=='11':
-        
+    elif choice == '11':  # print this menu
+
     else:
         print("choice",choice,"not yet implemented")
 
