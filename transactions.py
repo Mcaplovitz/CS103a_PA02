@@ -45,7 +45,7 @@ class Transactions():
         ''' return a transaction with a specified rowid '''
         con= sqlite3.connect(self.dbfile)
         cur = con.cursor()
-        cur.execute("SELECT item#,* from transactions where item#=(?)",(itemNum,) )
+        cur.execute("SELECT item#,* from transactions where item#=(?)",(itemNum) )
         tuples = cur.fetchall()
         con.commit()
         con.close()
@@ -58,7 +58,7 @@ class Transactions():
         '''
         con= sqlite3.connect(self.dbfile)
         cur = con.cursor()
-        cur.execute("INSERT INTO transactions VALUES(?,?)",(item['item#'],item['amount'],item['category'],item['date'],item['description']))
+        cur.execute("INSERT INTO transactions VALUES(?,?,?,?,?)",(item['item#'],item['amount'],item['category'],item['date'],item['description']))
         con.commit()
         cur.execute("SELECT last_insert_rowid()")
         last_rowid = cur.fetchone()
