@@ -53,7 +53,8 @@ menu = '''
 8. summarize transactions by month
 9. summarize transactions by year
 10. summarize transactions by category
-11. print this menu
+11. Clear table
+12. print this menu
 '''
 
 
@@ -78,24 +79,27 @@ def process_choice(choice):
         desc = input("new category description: ")
         cat = {'name':name, 'desc':desc}
         category.update(rowid,cat)
-    elif choice =='4': #show transactions
+    # elif choice =='4': #show transactions
 
-    elif choice == '5':  # add transaction
+    # elif choice == '5':  # add transaction
 
-    elif choice == '6':  # delete transaction
+    # elif choice == '6':  # delete transaction
 
-    elif choice == '7':  # summarize transactions by date
+    # elif choice == '7':  # summarize transactions by date
 
     elif choice == '8':  # summarize transactions by month
+        mon = category.month_check()
+        print_categories(mon)
+    # elif choice == '9':  # summarize transactions by year
 
-    elif choice == '9':  # summarize transactions by year
+    # elif choice == '10':  # summarize transactions by category
 
-    elif choice == '10':  # summarize transactions by category
+    # elif choice == '11':  # Clear table
 
-    elif choice == '11':  # print this menu
-
+    # elif choice == '12':  # print this menu
+    
     else:
-        print("choice",choice,"not yet implemented")
+         print("choice",choice,"not yet implemented")
 
     choice = input("> ")
     return(choice)
