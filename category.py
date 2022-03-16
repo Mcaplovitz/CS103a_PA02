@@ -90,3 +90,12 @@ class Category():
         ''',(rowid,))
         con.commit()
         con.close()
+    
+    def month_check(self):
+        con = sqlite3.connect(self.dbfile)
+        cur = con.cursor()
+        cur.execute("SELECT * FROM categories ORDER BY date")
+        tuples = cur.fetchall()
+        con.commit()
+        con.close()
+        return to_cat_dict(tuples)
