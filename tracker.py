@@ -31,11 +31,13 @@ could be replaced with PostgreSQL or Pandas or straight python lists
 
 '''
 
-#from transactions import Transaction
+from transactions import Transaction
 from category import Category
 import sys
 
-#transactions = Transaction('tracker.db')
+from transactions import Transactions
+
+transactions = Transaction('tracker.db')
 category = Category('tracker.db')
 
 
@@ -88,7 +90,7 @@ def process_choice(choice):
     # elif choice == '7':  # summarize transactions by date
 
     elif choice == '8':  # summarize transactions by month
-        mon = category.month_check()
+        mon = transactions.month_sort()
         print_categories(mon)
     # elif choice == '9':  # summarize transactions by year
 

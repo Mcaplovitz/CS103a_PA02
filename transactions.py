@@ -95,3 +95,11 @@ class Transactions():
         con.commit()
         con.close()
     
+    def month_sort(self):
+        con = sqlite3.connect(self.dbfile)
+        cur = con.cursor()
+        cur.execute("SELECT * FROM categories ORDER BY date")
+        tuples = cur.fetchall()
+        con.commit()
+        con.close()
+        return to_tra_dict(tuples)
