@@ -98,7 +98,17 @@ class Transactions():
     def month_sort(self):
         con = sqlite3.connect(self.dbfile)
         cur = con.cursor()
-        cur.execute("SELECT * FROM categories ORDER BY date")
+        cur.execute("SELECT * FROM transactions ORDER BY date")
+        tuples = cur.fetchall()
+        con.commit()
+        con.close()
+        return to_tra_dict(tuples)
+    
+    def year_sort(self):
+        con = sqlite3.connect(self.dbfile)
+        cur = con.cursor()
+        cur.execute("SELECT * FROM transactions ORDER BY date")
+        
         tuples = cur.fetchall()
         con.commit()
         con.close()

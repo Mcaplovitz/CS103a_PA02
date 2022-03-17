@@ -92,8 +92,9 @@ def process_choice(choice):
     elif choice == '8':  # summarize transactions by month
         mon = transactions.month_sort()
         print_categories(mon)
-    # elif choice == '9':  # summarize transactions by year
-
+    elif choice == '9':  # summarize transactions by year
+        year = transactions.year_sort()
+        print_categories(year)
     # elif choice == '10':  # summarize transactions by category
 
     # elif choice == '11':  # Clear table
