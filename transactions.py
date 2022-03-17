@@ -2,7 +2,7 @@
 transactions.py is a Object Relational Mapping to the transactions table
 
 The ORM will work map SQL rows with the schema
-    (item#,amount,category,date,description)
+    (amount,category,date,description)
 to Python Dictionaries.
 
 This app will store the data in a SQLite database ~/tracker.db
@@ -11,9 +11,11 @@ This app will store the data in a SQLite database ~/tracker.db
 import sqlite3
 
 def to_tra_dict(tra_tuple):
-    ''' tra is a transaction tuple (item#, amount, category, date, description)'''
-    tra = {'itemnum':tra_tuple[0], 'amount':tra_tuple[1], 'category':tra_tuple[2],'date':tra_tuple[3], 'description':tra_tuple[4]}
-    return tra
+    ''' tra is a transaction tuple (amount, category, date, description)'''
+    if len(tra_tuple) == 5:
+        return {'amount':tra_tuple[1], 'category':tra_tuple[2],'date':tra_tuple[3], 'description':tra_tuple[4]}
+    else:
+        return {'amount':tra_tuple[0], 'category':tra_tuple[1],'date':tra_tuple[2], 'description':tra_tuple[3]}
 
 def to_tra_dict_list(tra_tuples):
     ''' convert a list of transaction tuples into a list of dictionaries'''
@@ -26,7 +28,7 @@ class Transactions():
         con= sqlite3.connect(dbfile)
         cur = con.cursor()
         cur.execute('''CREATE TABLE IF NOT EXISTS transactions
-                    (itemnum int, amount float, category text, date text, description text)''')
+                    (amount float, category text, date text, description text)''')
         con.commit()
         con.close()
         self.dbfile = dbfile
@@ -35,18 +37,20 @@ class Transactions():
         ''' return all of the transactions as a list of dicts.'''
         con= sqlite3.connect(self.dbfile)
         cur = con.cursor()
-        cur.execute("SELECT itemnum,* from transactions")
+        cur.execute("SELECT rowid,* from transactions")
         tuples = cur.fetchall()
         con.commit()
         con.close()
         return to_tra_dict_list(tuples)
 
-    def select_one(self,itemNums):
+    def select_one(self,rowid):
         ''' return a transaction with a specified rowid '''
         con= sqlite3.connect(self.dbfile)
         cur = con.cursor()
-        cur.execute("SELECT itemnum,* from transactions where itemnum=(?)",(itemNums))
+        # print(itemNums)
+        cur.execute("SELECT rowid,* from transactions where rowid=(?)",(rowid,))
         tuples = cur.fetchall()
+        # print(tuples[0])
         con.commit()
         con.close()
         return to_tra_dict(tuples[0])
@@ -58,7 +62,7 @@ class Transactions():
         '''
         con= sqlite3.connect(self.dbfile)
         cur = con.cursor()
-        cur.execute("INSERT INTO transactions VALUES(?,?,?,?,?)",(item['itemnum'],item['amount'],item['category'],item['date'],item['description']))
+        cur.execute("INSERT INTO transactions VALUES(?,?,?,?)",(item['amount'],item['category'],item['date'],item['description']))
         con.commit()
         cur.execute("SELECT last_insert_rowid()")
         last_rowid = cur.fetchone()
@@ -66,28 +70,28 @@ class Transactions():
         con.close()
         return last_rowid[0]
 
-    def update(self,itemNum,item):
+    def update(self,rowid,item):
         ''' updates a transaction to the transactions table.
             this returns the number of the updated element
         '''
         con= sqlite3.connect(self.dbfile)
         cur = con.cursor()
         cur.execute('''UPDATE transactions
-                        SET itemnum=(?), amount=(?), category=(?), date=(?), description=(?)
-                        WHERE itemnum=(?);
-        ''',(item['itemnum'],item['amount'],item['category'],item['dat'],item['description'],itemNum))
+                        SET amount=(?), category=(?), date=(?), description=(?)
+                        WHERE rowid=(?);
+        ''',(item['amount'],item['category'],item['date'],item['description'],rowid))
         con.commit()
         con.close()
 
-    def delete(self,itemNum):
+    def delete(self,rowid):
         ''' delete a transaction to the transactions table.
             this returns the item number of the deleted element
         '''
         con= sqlite3.connect(self.dbfile)
         cur = con.cursor()
         cur.execute('''DELETE FROM transactions
-                       WHERE itemnum=(?);
-        ''',(itemNum,))
+                       WHERE rowid=(?);
+        ''',(rowid,))
         con.commit()
         con.close()
     
