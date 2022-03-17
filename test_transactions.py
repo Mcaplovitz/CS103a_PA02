@@ -22,9 +22,9 @@ def empty_db(dbfile):
 @pytest.fixture
 def small_db(empty_db):
     ''' create a small database, and tear it down later'''
-    tra1 = {'amount':20, 'category': 'food', 'date': '3/14/2022', 'description': 'groceries'}
-    tra2 = {'amount':30, 'category': 'food', 'date': '2/14/2022', 'description': 'groceries'}
-    tra3 = {'amount':40, 'category': 'food', 'date': '1/14/2022', 'description': 'groceries'}
+    tra1 = {'amount':20, 'category': 'food', 'date': '20220314', 'description': 'groceries'}
+    tra2 = {'amount':30, 'category': 'food', 'date': '20220214', 'description': 'groceries'}
+    tra3 = {'amount':40, 'category': 'food', 'date': '20220114', 'description': 'groceries'}
     id1=empty_db.add(tra1)
     id2=empty_db.add(tra2)
     id3=empty_db.add(tra3)
@@ -42,7 +42,7 @@ def med_db(small_db):
         s = str(i)
         tra ={'amount': 20 * i, 
             'category': 'food' + s,
-            'date':'3/14/2022',
+            'date':'20220314',
             'description':'i love food '+s
             }
         rowid = small_db.add(tra)
@@ -59,10 +59,10 @@ def med_db(small_db):
 @pytest.mark.simple
 def test_to_tra_dict():
     ''' teting the to_tra_dict function '''
-    a = to_tra_dict((20,'food','3/14/2022', 'i love food'))
+    a = to_tra_dict((20,'food','20220314', 'i love food'))
     assert a['amount']==20
     assert a['category']=='food'
-    assert a['date'] == '3/14/2022'
+    assert a['date'] == '20220314'
     assert a['description'] == 'i love food'
     assert len(a.keys())==4
 
@@ -72,8 +72,8 @@ def test_tra_add(med_db):
     ''' add a transaction to db, then select it, then compare it'''
     tra ={  'amount': 20,
             'category': 'food',
-            'date':'3/14/2022',
-            'description':'i love food '
+            'date':'20220314',
+            'description':'i love food'
             }
     tras0 = med_db.select_all()
     rowid = med_db.add(tra)
@@ -95,8 +95,8 @@ def test_tra_delete(med_db):
     # then we add this transaction to the table and get the new list of rows
     tra0 ={  'amount': 20,
             'category': 'food',
-            'date':'3/14/2022',
-            'description':'i love food '
+            'date':'20220314',
+            'description':'i love food'
             }
     rowid = med_db.add(tra0)
     tras1 = med_db.select_all()
@@ -115,15 +115,15 @@ def test_tra_update(med_db):
     # then we add this transaction to the table and get the new list of rows
     tra0 ={ 'amount': 20,
             'category': 'food',
-            'date':'3/14/2022',
-            'description':'i love food '
+            'date':'20220314',
+            'description':'i love food'
             }
     rowid = med_db.add(tra0)
 
     # now we update the transaction
     tra1 ={ 'amount': 30,
             'category': 'food',
-            'date':'2/14/2022',
+            'date':'20220214',
             'description':'i love food a lot'
             }
     med_db.update(rowid,tra1)
