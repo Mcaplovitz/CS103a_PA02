@@ -134,3 +134,4 @@ def test_tra_update(med_db):
     assert tra1['category']==tra2['category']
     assert tra1['date']==tra2['date']
     assert tra1['description']==tra2['description']
+
