@@ -31,13 +31,12 @@ could be replaced with PostgreSQL or Pandas or straight python lists
 
 '''
 
-from transactions import Transaction
 from category import Category
 import sys
 
 from transactions import Transactions
 
-transactions = Transaction('tracker.db')
+transactions = Transactions('tracker.db')
 category = Category('tracker.db')
 
 
@@ -46,7 +45,7 @@ category = Category('tracker.db')
 menu = '''
 0. quit
 1. show categories
-2. add category
+2. add category5
 3. modify category
 4. show transactions
 5. add transaction
@@ -84,15 +83,15 @@ def process_choice(choice):
     # elif choice =='4': #show transactions
 
     elif choice == '5': 
-        print("Add A Transaction To The Database")
-        amount = input("Please Input The Cost Of The Transaction")
+        print("Add A Transaction To The Database!")
+        amount = input("Please Input The Cost Of The Transaction: ")
         name = input("Please Input The Name of Category: ")
         date = input("Please Input The Date This Item Was Bought: ")
         description = input("Please Input The Description of the Item: ")
 
         dicter = {'amount':amount, 'category':name, 'date': date, 'description':description}
         add = transactions.add(dicter)
-        print("We Successfully Add Transction " + add +" To The Database")
+        print("We Successfully Add Transction ", add, " To The Database")
 
     elif choice == '6':
         deletion = input("Please Input The Number Of The Transaction You're Deleting")
