@@ -80,7 +80,8 @@ def process_choice(choice):
         desc = input("new category description: ")
         cat = {'name':name, 'desc':desc}
         category.update(rowid,cat)
-    elif choice =='4': #show transactions
+    # Made By Fritz Duverglas
+    elif choice =='4':
         print_transactions(transactions.select_all())
     #Made by John Lervandal
     elif choice == '5': 
@@ -112,7 +113,8 @@ def process_choice(choice):
 
     # elif choice == '11':  # Clear table
 
-    # elif choice == '12':  # print this menu
+    elif choice == '12':
+        print(menu)
     
     else:
          print("choice",choice,"not yet implemented")
@@ -147,7 +149,6 @@ def print_transactions(items):
     for item in items:
         lis = []
         lis = [x for x in list(item.values())]
-        lis.insert(0, counter)
         values = tuple(lis)
         counter += 1
         print("%-10s %-10s %-10s %-10s %-30s"%values)
