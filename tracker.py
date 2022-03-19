@@ -80,11 +80,11 @@ def process_choice(choice):
         desc = input("new category description: ")
         cat = {'name':name, 'desc':desc}
         category.update(rowid,cat)
+    # Made By Fritz Duverglas
     elif choice =='4': #show transactions
         print_transactions(transactions.select_all())
-        
     #Made by John Lervandal
-    elif choice == '5': 
+    elif choice == '5':
         print("Add A Transaction To The Database!")
         amount = float(input("Please Input The Cost Of The Transaction: "))
         name = input("Please Input The Name of Category: ")
@@ -93,7 +93,7 @@ def process_choice(choice):
 
         dicter = {'amount':amount, 'category':name, 'date': date, 'description':description}
         add = transactions.add(dicter)
-        print("We Successfully Add Transction ", add, " To The Database")
+        print("We Successfully Add Transction", add, "To The Database")
 
     #Made by John Lervandal
     elif choice == '6':
@@ -113,8 +113,8 @@ def process_choice(choice):
 
     # elif choice == '11':  # Clear table
 
-    # elif choice == '12':  # print this menu
-    
+    elif choice == '12':  # print this menu  
+        print(menu)
     else:
          print("choice",choice,"not yet implemented")
 
@@ -146,9 +146,8 @@ def print_transactions(items):
     print('-'*50)
     counter = 1
     for item in items:
-        lis = []
         lis = [x for x in list(item.values())]
-        lis.insert(0, counter)
+        lis.insert(0, transactions.select_rowid(item))
         values = tuple(lis)
         counter += 1
         print("%-10s %-10s %-10s %-10s %-30s"%values)

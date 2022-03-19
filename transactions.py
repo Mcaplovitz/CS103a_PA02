@@ -54,6 +54,17 @@ class Transactions():
         con.commit()
         con.close()
         return to_tra_dict(tuples[0])
+    
+    def select_rowid(self, item):
+        ''' return a transaction with a specified rowid '''
+        con= sqlite3.connect(self.dbfile)
+        cur = con.cursor()
+        # print(itemNums)
+        cur.execute("SELECT rowid from transactions where amount=(?) and category=(?) and date=(?) and description=(?)",(item['amount'],item['category'],item['date'],item['description']))
+        id = cur.fetchone()
+        con.commit()
+        con.close()
+        return id[0]
 
 
     def add(self,item):
