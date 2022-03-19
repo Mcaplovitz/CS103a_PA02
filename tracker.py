@@ -92,9 +92,12 @@ def process_choice(choice):
 
         dicter = {'amount':amount, 'category':name, 'date': date, 'description':description}
         add = transactions.add(dicter)
-        print("We Successfully Add Item Number " + add +" To The Database")
+        print("We Successfully Add Transction " + add +" To The Database")
 
-    # elif choice == '6':  # delete transaction
+    elif choice == '6':
+        deletion = input("Please Input The Number Of The Transaction You're Deleting")
+        transactions.delete(input)
+        print("We Have Sucessfully Deleted The Transaction From The Database")
 
     # elif choice == '7':  # summarize transactions by date
 
