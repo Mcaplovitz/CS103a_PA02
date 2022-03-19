@@ -83,7 +83,16 @@ def process_choice(choice):
         category.update(rowid,cat)
     # elif choice =='4': #show transactions
 
-    # elif choice == '5':  # add transaction
+    elif choice == '5': 
+        print("Add A Transaction To The Database")
+        amount = input("Please Input The Cost Of The Transaction")
+        name = input("Please Input The Name of Category: ")
+        date = input("Please Input The Date This Item Was Bought: ")
+        description = input("Please Input The Description of the Item: ")
+
+        dicter = {'amount':amount, 'category':name, 'date': date, 'description':description}
+        add = transactions.add(dicter)
+        print("We Successfully Add Item Number " + add +" To The Database")
 
     # elif choice == '6':  # delete transaction
 
