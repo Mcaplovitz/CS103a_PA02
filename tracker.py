@@ -45,7 +45,7 @@ category = Category('tracker.db')
 menu = '''
 0. quit
 1. show categories
-2. add category5
+2. add category
 3. modify category
 4. show transactions
 5. add transaction
@@ -80,11 +80,12 @@ def process_choice(choice):
         desc = input("new category description: ")
         cat = {'name':name, 'desc':desc}
         category.update(rowid,cat)
-    # elif choice =='4': #show transactions
+    elif choice =='4': #show transactions
+        print_transactions(transactions.select_all())
 
     elif choice == '5': 
         print("Add A Transaction To The Database!")
-        amount = input("Please Input The Cost Of The Transaction: ")
+        amount = float(input("Please Input The Cost Of The Transaction: "))
         name = input("Please Input The Name of Category: ")
         date = input("Please Input The Date This Item Was Bought: ")
         description = input("Please Input The Description of the Item: ")
@@ -94,8 +95,8 @@ def process_choice(choice):
         print("We Successfully Add Transction ", add, " To The Database")
 
     elif choice == '6':
-        deletion = input("Please Input The Number Of The Transaction You're Deleting")
-        transactions.delete(input)
+        deletion = int(input("Please Input The Number Of The Transaction You're Deleting"))
+        transactions.delete(deletion)
         print("We Have Sucessfully Deleted The Transaction From The Database")
 
     # elif choice == '7':  # summarize transactions by date
@@ -139,12 +140,16 @@ def print_transactions(items):
         print('no items to print')
         return
     print('\n')
-    print("%-10s %-10d %-10s %-10d %-30s"%(
-        'item #','amount','category','date','description'))
-    print('-'*40)
+    print("%-10s %-10s %-10s %-10s %-30s"%('item #','amount','category','date','description'))
+    print('-'*50)
+    counter = 1
     for item in items:
-        values = tuple(item.values()) 
-        print("%-10s %-10d %-10s %-10d %-30s"%values)
+        lis = []
+        lis = [x for x in list(item.values())]
+        lis.insert(0, counter)
+        values = tuple(lis)
+        counter += 1
+        print("%-10s %-10s %-10s %-10s %-30s"%values)
 
 def print_category(cat):
     print("%-3d %-10s %-30s"%(cat['rowid'],cat['name'],cat['desc']))
