@@ -56,6 +56,7 @@ menu = '''
 10. summarize transactions by category
 11. Clear table
 12. print this menu
+13. summarize transactions by most expensive
 '''
 
 
