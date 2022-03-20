@@ -107,6 +107,7 @@ def process_choice(choice):
         mon = transactions.month_sort()
         print_categories(mon)
     elif choice == '9':  # summarize transactions by year
+        # Made by Pedro Estrada
         year = transactions.year_sort()
         print_categories(year)
     # elif choice == '10':  # summarize transactions by category
@@ -115,6 +116,8 @@ def process_choice(choice):
 
     elif choice == '12':  # print this menu  
         print(menu)
+    elif choice == '13': #summarize by the top
+        print(transactions.amount_sort())
     else:
          print("choice",choice,"not yet implemented")
 
