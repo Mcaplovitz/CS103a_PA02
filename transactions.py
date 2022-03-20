@@ -113,7 +113,7 @@ class Transactions():
         tuples = cur.fetchall()
         con.commit()
         con.close()
-        return to_tra_dict(tuples)
+        return to_tra_dict_list(tuples)
     
     def year_sort(self):
         con = sqlite3.connect(self.dbfile)
@@ -123,7 +123,7 @@ class Transactions():
         tuples = cur.fetchall()
         con.commit()
         con.close()
-        return to_tra_dict(tuples)
+        return to_tra_dict_list(tuples)
 
     def amount_sort(self):
         con = sqlite3.connect(self.dbfile)
