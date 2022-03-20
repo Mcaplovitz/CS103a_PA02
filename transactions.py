@@ -128,9 +128,9 @@ class Transactions():
     def amount_sort(self):
         con = sqlite3.connect(self.dbfile)
         cur = con.cursor()
-        cur.execute("SELECT * FROM transactions ORDER BY amount")
+        cur.execute("SELECT * FROM transactions ORDER BY amount DESC")
         
         tuples = cur.fetchall()
         con.commit()
         con.close() 
-        return tuples
+        return to_tra_dict_list(tuples)
