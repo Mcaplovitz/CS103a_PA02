@@ -117,7 +117,7 @@ def process_choice(choice):
     elif choice == '12':  # print this menu  
         print(menu)
     elif choice == '13': #summarize by the top
-        print(transactions.amount_sort())
+        print_transactions(transactions.amount_sort())
     else:
          print("choice",choice,"not yet implemented")
 
