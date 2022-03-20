@@ -89,7 +89,7 @@ def process_choice(choice):
         print("Add A Transaction To The Database!")
         amount = float(input("Please Input The Cost Of The Transaction: "))
         name = input("Please Input The Name of Category: ")
-        date = input("Please Input The Date (Month/Year) This Item Was Bought: ")
+        date = input("Please Input The Date (yyyymmdd) This Item Was Bought: ")
         description = input("Please Input The Description of the Item: ")
 
         dicter = {'amount':amount, 'category':name, 'date': date, 'description':description}
