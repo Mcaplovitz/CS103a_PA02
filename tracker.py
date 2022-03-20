@@ -104,10 +104,11 @@ def process_choice(choice):
     # elif choice == '7':  # summarize transactions by date
 
     elif choice == '8':  # summarize transactions by month
+        # Made by Matthew Caplovitz
         mon = transactions.month_sort()
         print_transactions(mon)
     elif choice == '9':  # summarize transactions by year
-        # Made by Pedro Estrada
+        # Made by Matthew Caplovitz
         year = transactions.year_sort()
         print_transactions(year)
     # elif choice == '10':  # summarize transactions by category
