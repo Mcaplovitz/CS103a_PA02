@@ -109,21 +109,21 @@ class Transactions():
     def month_sort(self):
         con = sqlite3.connect(self.dbfile)
         cur = con.cursor()
-        cur.execute("SELECT * FROM transactions ORDER BY date")
+        cur.execute("SELECT * FROM transactions ORDER BY substring(date,4:6)")
         tuples = cur.fetchall()
         con.commit()
         con.close()
-        return to_tra_dict(tuples)
+        return to_tra_dict_list(tuples)
     
     def year_sort(self):
         con = sqlite3.connect(self.dbfile)
         cur = con.cursor()
-        cur.execute("SELECT * FROM transactions ORDER BY date")
+        cur.execute("SELECT * FROM transactions ORDER BY substring(date,0:4)")
         
         tuples = cur.fetchall()
         con.commit()
         con.close()
-        return to_tra_dict(tuples)
+        return to_tra_dict_list(tuples)
 
     def amount_sort(self):
         con = sqlite3.connect(self.dbfile)

@@ -56,6 +56,7 @@ menu = '''
 10. summarize transactions by category
 11. Clear table
 12. print this menu
+13. summarize transactions by most expensive
 '''
 
 
@@ -88,7 +89,7 @@ def process_choice(choice):
         print("Add A Transaction To The Database!")
         amount = float(input("Please Input The Cost Of The Transaction: "))
         name = input("Please Input The Name of Category: ")
-        date = input("Please Input The Date This Item Was Bought: ")
+        date = input("Please Input The Date (yyyymmdd) This Item Was Bought: ")
         description = input("Please Input The Description of the Item: ")
 
         dicter = {'amount':amount, 'category':name, 'date': date, 'description':description}
@@ -104,12 +105,13 @@ def process_choice(choice):
     # elif choice == '7':  # summarize transactions by date
 
     elif choice == '8':  # summarize transactions by month
+        # Made by Matthew Caplovitz
         mon = transactions.month_sort()
-        print_categories(mon)
+        print_transactions(mon)
     elif choice == '9':  # summarize transactions by year
-        # Made by Pedro Estrada
+        # Made by Matthew Caplovitz
         year = transactions.year_sort()
-        print_categories(year)
+        print_transactions(year)
     # elif choice == '10':  # summarize transactions by category
 
     # elif choice == '11':  # Clear table
