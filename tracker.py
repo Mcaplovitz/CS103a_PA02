@@ -54,9 +54,8 @@ menu = '''
 8. summarize transactions by month
 9. summarize transactions by year
 10. summarize transactions by category
-11. Clear table
-12. print this menu
-13. summarize transactions by most expensive
+11. print this menu
+12. summarize transactions by most expensive
 '''
 
 
@@ -120,11 +119,10 @@ def process_choice(choice):
         print_transactions(cat)
 
 
-    # elif choice == '11':  # Clear table
 
-    elif choice == '12':  # print this menu  
+    elif choice == '11':  # print this menu  
         print(menu)
-    elif choice == '13': #summarize by the top
+    elif choice == '12': #summarize by the top
         print_transactions(transactions.amount_sort())
     else:
          print("choice",choice,"not yet implemented")
