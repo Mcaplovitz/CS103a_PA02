@@ -103,13 +103,14 @@ def process_choice(choice):
         print("We Have Sucessfully Deleted The Transaction From The Database")
 
     # elif choice == '7':  # summarize transactions by date
+    #Made by Matthew Caplovitz
 
     elif choice == '8':  # summarize transactions by month
         # Made by Matthew Caplovitz
         mon = transactions.month_sort()
         print_transactions(mon)
     elif choice == '9':  # summarize transactions by year
-        # Made by Matthew Caplovitz
+        # Made by Pedro Estrada
         year = transactions.year_sort()
         print_transactions(year)
     
