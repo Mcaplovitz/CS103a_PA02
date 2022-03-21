@@ -54,9 +54,8 @@ menu = '''
 8. summarize transactions by month
 9. summarize transactions by year
 10. summarize transactions by category
-11. Clear table
-12. print this menu
-13. summarize transactions by most expensive
+11. print this menu
+12. summarize transactions by most expensive
 '''
 
 
@@ -102,26 +101,30 @@ def process_choice(choice):
         transactions.delete(deletion)
         print("We Have Sucessfully Deleted The Transaction From The Database")
 
-    elif choice == '7':  # summarize transactions by date
-        #Made By Pedro Estrada
-        date = transactions.date_sort()
-        print_transactions(date)
+    # elif choice == '7':  # summarize transactions by date
+    #Made by Matthew Caplovitz
+
     elif choice == '8':  # summarize transactions by month
         # Made by Matthew Caplovitz
         mon = transactions.month_sort()
         print_transactions(mon)
     elif choice == '9':  # summarize transactions by year
-        # Made by Matthew Caplovitz
+        # Made by Pedro Estrada
         year = transactions.year_sort()
         print_transactions(year)
-    # elif choice == '10':  # summarize transactions by category
+    
+    #made by Jalon Kimes
+    elif choice == '10':  # summarize transactions by category
+        cat = transactions.category_sort()
+        print_transactions(cat)
 
-    # elif choice == '11':  # Clear table
 
-    elif choice == '12':  # print this menu  
+
+    elif choice == '11':  # print this menu  
+        #Made by Fritz Duverglas
         print(menu)
-    elif choice == '13': #summarize by the top transactions
-        #Made by Pedro Estrada
+    elif choice == '12': #summarize by the top
+        #Made by Pedro Estrada - Custom
         print_transactions(transactions.amount_sort())
     else:
          print("choice",choice,"not yet implemented")
