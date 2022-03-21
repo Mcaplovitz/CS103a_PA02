@@ -121,8 +121,10 @@ def process_choice(choice):
 
 
     elif choice == '11':  # print this menu  
+        #Made by Fritz Duverglas
         print(menu)
     elif choice == '12': #summarize by the top
+        #Made by Pedro Estrada - Custom
         print_transactions(transactions.amount_sort())
     else:
          print("choice",choice,"not yet implemented")
