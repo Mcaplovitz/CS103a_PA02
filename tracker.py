@@ -112,7 +112,12 @@ def process_choice(choice):
         # Made by Matthew Caplovitz
         year = transactions.year_sort()
         print_transactions(year)
-    # elif choice == '10':  # summarize transactions by category
+    
+    #made by Jalon Kimes
+    elif choice == '10':  # summarize transactions by category
+        cat = transactions.category_sort()
+        print_transactions(cat)
+
 
     # elif choice == '11':  # Clear table
 
