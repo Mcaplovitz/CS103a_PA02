@@ -101,8 +101,10 @@ def process_choice(choice):
         transactions.delete(deletion)
         print("We Have Sucessfully Deleted The Transaction From The Database")
 
-    # elif choice == '7':  # summarize transactions by date
-    #Made by Matthew Caplovitz
+    elif choice == '7':  # summarize transactions by date
+        #Made By Pedro Estrada
+        date = transactions.date_sort()
+        print_transactions(date)
 
     elif choice == '8':  # summarize transactions by month
         # Made by Matthew Caplovitz
