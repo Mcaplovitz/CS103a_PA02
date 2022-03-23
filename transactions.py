@@ -2,7 +2,8 @@
 transactions.py is a Object Relational Mapping to the transactions table
 
 The ORM will work map SQL rows with the schema
-    (amount,category,date,description)
+    (amount,
+    ,date,description)
 to Python Dictionaries.
 
 This app will store the data in a SQLite database ~/tracker.db
@@ -139,6 +140,25 @@ class Transactions():
         con = sqlite3.connect(self.dbfile)
         cur = con.cursor()
         cur.execute("SELECT * FROM transactions ORDER BY date")
+        
+        tuples = cur.fetchall()
+        con.commit()
+        con.close()
+        return to_tra_dict_list(tuples)
+    
+    def category_sort(self):
+        con = sqlite3.connect(self.dbfile)
+        cur = con.cursor()
+        cur.execute("SELECT * FROM transactions ORDER BY category")
+        
+        tuples = cur.fetchall()
+        con.commit()
+        con.close()
+        return to_tra_dict_list(tuples)
+    def clear_table(self):
+        con = sqlite3.connect(self.dbfile)
+        cur = con.cursor()
+        cur.execute('''DELETE FROM transactions ''')
         
         tuples = cur.fetchall()
         con.commit()

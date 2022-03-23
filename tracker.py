@@ -56,6 +56,7 @@ menu = '''
 10. summarize transactions by category
 11. print this menu
 12. summarize transactions by most expensive
+13. clears the table
 '''
 
 
@@ -128,6 +129,12 @@ def process_choice(choice):
     elif choice == '12': #summarize by the top
         #Made by Pedro Estrada - Custom
         print_transactions(transactions.amount_sort())
+    elif choice == '13': #clears each row from a given table
+       # name = input("Enter the name of the Table")
+       transactions.clear_table()
+       print("All transactions were deleted")
+
+
     else:
          print("choice",choice,"not yet implemented")
 
