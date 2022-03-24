@@ -70,15 +70,15 @@ def process_choice(choice):
         cats = category.select_all()
         print_categories(cats)
     elif choice=='2':
-        name = input("category name: ")
-        desc = input("category description: ")
+        name = raw_input("category name: ")
+        desc = raw_input("category description: ")
         cat = {'name':name, 'desc':desc}
         category.add(cat)
     elif choice=='3':
         print("modifying category")
-        rowid = int(input("rowid: "))
-        name = input("new category name: ")
-        desc = input("new category description: ")
+        rowid = int(raw_input("rowid: "))
+        name = raw_input("new category name: ")
+        desc = raw_input("new category description: ")
         cat = {'name':name, 'desc':desc}
         category.update(rowid,cat)
     # Made By Fritz Duverglas
@@ -87,10 +87,10 @@ def process_choice(choice):
     #Made by John Lervandal
     elif choice == '5':
         print("Add A Transaction To The Database!")
-        amount = float(input("Please Input The Cost Of The Transaction: "))
-        name = input("Please Input The Name of Category: ")
-        date = input("Please Input The Date (yyyymmdd) This Item Was Bought: ")
-        description = input("Please Input The Description of the Item: ")
+        amount = float(raw_input("Please Input The Cost Of The Transaction: "))
+        name = raw_input("Please Input The Name of Category: ")
+        date = raw_input("Please Input The Date (yyyymmdd) This Item Was Bought: ")
+        description = raw_input("Please Input The Description of the Item: ")
 
         dicter = {'amount':amount, 'category':name, 'date': date, 'description':description}
         add = transactions.add(dicter)
@@ -98,7 +98,7 @@ def process_choice(choice):
 
     #Made by John Lervandal
     elif choice == '6':
-        deletion = int(input("Please Input The Number Of The Transaction You're Deleting: "))
+        deletion = int(raw_input("Please Input The Number Of The Transaction You're Deleting: "))
         transactions.delete(deletion)
         print("We Have Sucessfully Deleted The Transaction From The Database")
 
@@ -133,7 +133,7 @@ def process_choice(choice):
     else:
          print("choice",choice,"not yet implemented")
 
-    choice = input("> ")
+    choice = raw_input("> ")
     return(choice)
 
 
@@ -142,7 +142,7 @@ def toplevel():
 
     ''' read the command args and process them'''
     print(menu)
-    choice = input("> ")
+    choice = raw_input("> ")
     while choice !='0' :
         choice = process_choice(choice)
     print('bye')
@@ -159,12 +159,10 @@ def print_transactions(items):
     print('\n')
     print("%-10s %-10s %-10s %-10s %-30s"%('item #','amount','category','date','description'))
     print('-'*50)
-    counter = 1
     for item in items:
         lis = [x for x in list(item.values())]
         lis.insert(0, transactions.select_rowid(item))
         values = tuple(lis)
-        counter += 1
         print("%-10s %-10s %-10s %-10s %-30s"%values)
 
 def print_category(cat):
