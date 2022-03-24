@@ -135,4 +135,57 @@ def test_tra_update(med_db):
     assert tra1['date']==tra2['date']
     assert tra1['description']==tra2['description']
 
+@pytest.mark.datesort
+def test_date_sort(med_db):
+    ''' add a transaction to db, updates it, and see that it changes'''
 
+    # then we add this transaction to the table and get the new list of rows
+    tra0 ={ 'amount': 20,
+            'category': 'food',
+            'date':'20210314',
+            'description':'i love food'
+            }
+    rowid1 = med_db.add(tra0)
+    tra1 ={ 'amount': 20,
+            'category': 'food',
+            'date':'20200314',
+            'description':'i love food'
+            }
+    rowid2 = med_db.add(tra1)
+    
+    # now we retrieve the transaction and check that it has changed
+    test_dict = med_db.date_sort()
+    assert tra1['amount']==test_dict[0]["amount"]
+    assert tra1['category']==test_dict[0]["category"]
+    assert tra1['date']==test_dict[0]["date"]
+    assert tra1['description']==test_dict[0]["description"]
+
+@pytest.mark.amountsort
+def test_amount_sort(med_db):
+    ''' add a transaction to db, updates it, and see that it changes'''
+
+    # then we add this transaction to the table and get the new list of rows
+    tra0 ={ 'amount': 201,
+            'category': 'food',
+            'date':'20210314',
+            'description':'i love food'
+            }
+    rowid1 = med_db.add(tra0)
+    tra1 ={ 'amount': 202,
+            'category': 'food',
+            'date':'20200314',
+            'description':'i love food'
+            }
+    rowid2 = med_db.add(tra1)
+    
+    # now we retrieve the transaction and check that it has changed
+    test_dict = med_db.amount_sort()
+    assert tra1['amount']==test_dict[0]["amount"]
+    assert tra1['category']==test_dict[0]["category"]
+    assert tra1['date']==test_dict[0]["date"]
+    assert tra1['description']==test_dict[0]["description"]
+
+    assert tra0['amount']==test_dict[1]["amount"]
+    assert tra0['category']==test_dict[1]["category"]
+    assert tra0['date']==test_dict[1]["date"]
+    assert tra0['description']==test_dict[1]["description"]
