@@ -56,7 +56,7 @@ menu = '''
 10. summarize transactions by category
 11. print this menu
 12. summarize transactions by most expensive
-13. clears the table
+13. clears the transactions table
 '''
 
 
