@@ -1,0 +1,113 @@
+Script started on 2022-03-24 19:24:30-04:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="101" LINES="26"]
+[?2004h]0;matthew@penguin: ~/GitHub/CS103a_PA02[01;32mmatthew@penguin[00m:[01;34m~/GitHub/CS103a_PA02[00m$ exitpython tracker.py
+[?2004l
+
+0. quit
+1. show categories
+2. add category
+3. modify category
+4. show transactions
+5. add transaction
+6. delete transaction
+7. summarize transactions by date
+8. summarize transactions by month
+9. summarize transactions by year
+10. summarize transactions by category
+11. print this menu
+12. summarize transactions by most expensive
+13. clears the transactions table
+
+
+> 5
+Add A Transaction To The Database!
+Please Input The Cost Of The Transaction: 6.00
+Please Input The Name of Category: Peope le
+Please Input The Date (yyyymmdd) This Item Was Bought: 2022 00124
+Please Input The Description of the Item: test
+('We Successfully Add Transction', 4, 'To The Database')
+> 4
+
+
+item #     amount     category   date       description                   
+--------------------------------------------------
+1          5.0        People     20221324   Matthew                       
+2          6.0        People     20210223   Pedro                         
+3          2.0        People     20220321   Jason                         
+4          6.0        People     20200124   test                          
+> 6
+Please Input The Number Of The Transaction You're Deleting: 4
+We Have Sucessfully Deleted The Transaction From The Database
+> 4
+
+
+item #     amount     category   date       description                   
+--------------------------------------------------
+1          5.0        People     20221324   Matthew                       
+2          6.0        People     20210223   Pedro                         
+3          2.0        People     20220321   Jason                         
+> 7
+
+
+item #     amount     category   date       description                   
+--------------------------------------------------
+2          6.0        People     20210223   Pedro                         
+3          2.0        People     20220321   Jason                         
+1          5.0        People     20221324   Matthew                       
+> 8
+
+
+item #     amount     category   date       description                   
+--------------------------------------------------
+2          6.0        People     20210223   Pedro                         
+3          2.0        People     20220321   Jason                         
+1          5.0        People     20221324   Matthew                       
+> 9
+
+
+item #     amount     category   date       description                   
+--------------------------------------------------
+1          5.0        People     20221324   Matthew                       
+2          6.0        People     20210223   Pedro                         
+3          2.0        People     20220321   Jason                         
+> 10
+
+
+item #     amount     category   date       description                   
+--------------------------------------------------
+1          5.0        People     20221324   Matthew                       
+2          6.0        People     20210223   Pedro                         
+3          2.0        People     20220321   Jason                         
+> 11
+
+0. quit
+1. show categories
+2. add category
+3. modify category
+4. show transactions
+5. add transaction
+6. delete transaction
+7. summarize transactions by date
+8. summarize transactions by month
+9. summarize transactions by year
+10. summarize transactions by category
+11. print this menu
+12. summarize transactions by most expensive
+13. clears the transactions table
+
+> 12
+
+
+item #     amount     category   date       description                   
+--------------------------------------------------
+2          6.0        People     20210223   Pedro                         
+1          5.0        People     20221324   Matthew                       
+3          2.0        People     20220321   Jason                         
+> 13
+All transactions were deleted
+> 0
+bye
+[?2004h]0;matthew@penguin: ~/GitHub/CS103a_PA02[01;32mmatthew@penguin[00m:[01;34m~/GitHub/CS103a_PA02[00m$ wx[K[Kexit
+[?2004l
+exit
+
+Script done on 2022-03-24 19:29:56-04:00 [COMMAND_EXIT_CODE="0"]

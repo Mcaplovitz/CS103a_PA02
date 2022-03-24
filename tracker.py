@@ -160,7 +160,12 @@ def print_transactions(items):
     print("%-10s %-10s %-10s %-10s %-30s"%('item #','amount','category','date','description'))
     print('-'*50)
     for item in items:
-        lis = [x for x in list(item.values())]
+        lis = []
+        lis.append(item.get('amount'))
+        lis.append(item.get('category'))
+        lis.append(item.get('date'))
+        lis.append(item.get('description'))
+        # lis = [x for x in list(item.values())]
         lis.insert(0, transactions.select_rowid(item))
         values = tuple(lis)
         print("%-10s %-10s %-10s %-10s %-30s"%values)
