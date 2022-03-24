@@ -106,23 +106,18 @@ def process_choice(choice):
         #Made By Pedro Estrada
         date = transactions.date_sort()
         print_transactions(date)
-
     elif choice == '8':  # summarize transactions by month
         # Made by Matthew Caplovitz
         mon = transactions.month_sort()
         print_transactions(mon)
     elif choice == '9':  # summarize transactions by year
-        # Made by Pedro Estrada
+        # Made by Matthew Caplovitz
         year = transactions.year_sort()
         print_transactions(year)
-    
-    #made by Jalon Kimes
     elif choice == '10':  # summarize transactions by category
+        #Made by Jalon Kimes
         cat = transactions.category_sort()
         print_transactions(cat)
-
-
-
     elif choice == '11':  # print this menu  
         #Made by Fritz Duverglas
         print(menu)
