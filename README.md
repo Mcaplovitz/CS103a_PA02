@@ -3,7 +3,7 @@
 <h2>In this PA, we made a financial manager that uses a database and SQL queries.
 
 Our script output is below:</h2>
-```sh
+```
 Script started on 2022-03-24 19:24:30-04:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="101" LINES="26"]
 [?2004h]0;matthew@penguin: ~/GitHub/CS103a_PA02[01;32mmatthew@penguin[00m:[01;34m~/GitHub/CS103a_PA02[00m$ exitpython tracker.py
 [?2004l
